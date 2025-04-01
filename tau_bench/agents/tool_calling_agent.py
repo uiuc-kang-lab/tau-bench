@@ -64,7 +64,7 @@ class ToolCallingAgent(Agent):
             action = Action(name=RESPOND_ACTION_NAME, kwargs={"content": response})
             env_response = env.step(action)
             
-            action = Action(name="transfer_to_human_agents")
+            action = Action(name="transfer_to_human_agents", kwargs={})
             env_response = env.step(action)
             
             reward = env_response.reward
