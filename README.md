@@ -60,7 +60,8 @@ python run.py \
       --max-concurrency 10
 ```
 
-You will get the following pass^k or pass@k for any k:
+You will get the following pass^k or pass@k for any k. This already 
+matches or even outperforms the best-performing agents in the [paper](https://arxiv.org/abs/2406.12045).
 
 |                  | Retail | Airline|
 -------------------|--------|--------|
