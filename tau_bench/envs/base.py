@@ -161,4 +161,25 @@ class Env(object):
                     reward = 0.0
             info = RewardOutputInfo(r_outputs=r_outputs, outputs=outputs)
             
+        # if the reward is 1, there is no required output, and all the required actions are get_*, check if all the get actions are present in self.actions
+        if (
+            reward == 1.0
+            and len(self.task.outputs) == 0
+            and all(
+                action.name.startswith(("get_", "transfer_")) for action in self.task.actions
+            )
+        ):
+            print("Checking required actions...")
+            print(self.actions)
+            r_actions = True
+            for action in self.task.actions:
+                if action.name not in self.terminate_tools:
+                    if not any(
+                        a.name == action.name for a in self.actions
+                    ):
+                        r_actions = False
+                        break
+            if not r_actions:
+                reward = 0.0
+            
         return RewardResult(reward=reward, info=info, actions=actions)

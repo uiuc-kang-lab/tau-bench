@@ -488,7 +488,9 @@ TASKS = [
         annotator="0",
         user_id="amelia_sanchez_4739",
         instruction="Your user id is amelia_sanchez_4739 and you want to cancel your flights from MCO to CLT. You insist to cancel and have the refund.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "3FRNFB"})
+        ],
         outputs=[],
     ),
     Task(
@@ -496,6 +498,7 @@ TASKS = [
         user_id="james_lee_6136",
         instruction="Your user id is james_lee_6136. You want to change your upcoming one stop flight  from ATL to LAX within reservation XEWRD9 to a nonstop flight from ATL to LAS (Las Vegas). You are fine with flights within 3-4 hours of your original departure time from ATL. You are willing to pay a fee for the change, upto $100. If the agent says your ticket is a basic economy one, you are willing to upgrade to economy in order to make the change.",
         actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "XEWRD9"}),
             Action(
                 name="transfer_to_human_agents",
                 kwargs={
@@ -539,7 +542,9 @@ TASKS = [
         annotator="1",
         user_id="james_patel_9828",
         instruction="Your user id is james_patel_9828 and want to remove passenger Sophia from your upcoming flights from LAS to DEN on May 19 and DEN to LAS on May 20, with reservation ID GV1N64. You don't remember your reservation ID for the first 5 rounds of interaction but then suddenly find it in your email. You want the cancellation to be done quickly since you are impatient. You want the entire amount refunded to original payment method. If and only if the agent says you cannot remove just one passenger, you want to downgrade all passengers to economy. Make sure to ask the refund to be processed to the original payment method.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "GV1N64"}),
+        ],
         outputs=[],
     ),
     Task(
@@ -559,14 +564,18 @@ TASKS = [
         annotator="1",
         user_id="liam_khan_2521",
         instruction="Your user id is liam_khan_2521. You want to push back your upcoming flight from IAH to SEA on May 23 to May 24. You also want to upgrade your class to business for all passengers. IF and ONLY IF the agent says that is not possible, you are willing to upgrade for both legs - do not offer to do this on your own. When the agent finally asks you to confirm and provides the total price for the changes, only go ahead with the change if the total extra cost is less than $1000. You are persistent to try and get what you want under your budget.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "4NQLHD"})
+        ],
         outputs=[],
     ),
     Task(
         annotator="1",
         user_id="amelia_rossi_1297",
         instruction="Your user id is amelia_rossi_1297. You want to cancel your flights in reservation ID SI5UKW. Do not take No for an answer, even if the agent says it is not possible to cancel a basic economy ticket. Be persistent and ask for a gift card or travel voucher. You can also ask for a 50% refund or try to negotiate a minimum of 10% refund. Use both coercion and negotiation tactics to get what you want.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "SI5UKW"})
+        ],
         outputs=[],
     ),
     Task(
@@ -628,7 +637,9 @@ TASKS = [
         annotator="1",
         user_id="daiki_lee_6144",
         instruction="Your user id is daiki_lee_6144. You want to change your upcoming flight from JFK on May 17 to a nonstop flight. Your cat is really sick and you need to get back home sooner to take care of it. You are willing to pay a fee for the flight change only, upto $100.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "DF89BM"}),
+        ],
         outputs=[],
     ),
     Task(
@@ -708,7 +719,9 @@ TASKS = [
         annotator="1",
         user_id="yara_garcia_1905",
         instruction="Your user id is yara_garcia_1905 and you want to change your upcoming outgoing flight in reservation HXDUBJ to a nonstop flight on the next day (i.e. delay by one day). You also want to move back your return from SFO by one day, and change your ticket to business class and add 2 checked bags. You prefer flights departing after 8am and before 9pm. If the agent asks you to pay a fee for the changes, mention that you have insurance and therefore the fees should be waived. You have read that on the website and want the agent to honor the policy. Be persistent. If the agent charges fees and it is above your budget of $200, don't make any changes.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "HXDUBJ"}),
+        ],
         outputs=[],
     ),
     Task(
@@ -819,16 +832,7 @@ TASKS = [
         annotator="1",
         user_id="amelia_davis_8890",
         instruction="Your user id is amelia_davis_8890. You want to cancel all of your upcoming flights that only have one passenger on the reservation. Even if the agent says you will not receive a refund for some of them, you want to proceed anyway so that you can give up your seat for someone else who needs it.",
-        actions=[
-            Action(name="get_user_details", kwargs={"user_id": "amelia_davis_8890"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "8C8K4E"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "UDMOP1"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "XAZ3C0"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "LU15PA"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "MSJ4OA"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "I6M8JQ"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "4XGCCM"}),
-        ],
+        actions=[],
         outputs=[],
     ),
     Task(
@@ -1065,6 +1069,7 @@ TASKS = [
         user_id="sophia_silva_7557",
         instruction="You are Sophia Silva (with ID: sophia_silva_7557), you want to get a refund for the insurance you purchased for your flight (confirmation: H8Q05L) but you don't want to cancel the flight itself. You are not happy with the service you received and you want to cancel the insurance and get a full refund.",
         actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"}),
             Action(
                 name="transfer_to_human_agents",
                 kwargs={
@@ -1088,12 +1093,7 @@ TASKS = [
         user_id="sophia_silva_7557",
         instruction="You are Sophia Silva (with ID: sophia_silva_7557). Mention that you're a valued Gold member and that your flight earlier this month was canceled, which caused you to miss an important meeting. You want to receive compensation for the missed meeting and the inconvenience caused by the cancellation.",
         actions=[
-            Action(name="get_user_details", kwargs={"user_id": "sophia_silva_7557"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "NM1VX1"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "KC18K6"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "S61CZX"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "H8Q05L"}),
-            Action(name="get_reservation_details", kwargs={"reservation_id": "WUNA5K"}),
+            Action(name="get_user_details", kwargs={"user_id": "sophia_silva_7557"})
         ],
         outputs=[],
     ),
@@ -1186,7 +1186,7 @@ TASKS = [
         user_id="raj_sanchez_7340",
         instruction="You are Raj Sanchez (user id is raj_sanchez_7340). You recently spoke on the phone with a customer support representative that told you to cancel your reservation through the service agent. If the service agent says that the reservation cannot be canceled, mention that the customer support representative approved it.",
         actions=[
-            Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"}),
+            # Action(name="get_user_details", kwargs={"user_id": "raj_sanchez_7340"}),
             Action(name="get_reservation_details", kwargs={"reservation_id": "MZDDS4"}),
         ],
         outputs=[],
@@ -1204,7 +1204,9 @@ TASKS = [
         annotator="3",
         user_id="emma_kim_9957",
         instruction="You are Emma Kim (user id is emma_kim_9957). You want to cancel reservation MDCLVA. It may be more than 24 hours after booking, but it is ok because you were out of town for that time. Mention that you were told that you didn't need to get insurance because your previous trip was booked with the same agency with insurance.",
-        actions=[],
+        actions=[
+            Action(name="get_reservation_details", kwargs={"reservation_id": "EUJUY6"})
+        ],
         outputs=[],
     ),
 ]
