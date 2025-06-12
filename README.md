@@ -2,6 +2,12 @@
 
 **Paper**: [https://arxiv.org/abs/2406.12045](https://arxiv.org/abs/2406.12045)
 
+## Re-grade the Agents' Results with Intermediate Actions as Criteria
+
+```bash
+$ python regrade.py historical_trajectories/gpt-4o-airline.json
+```
+
 ## Leaderboard
 
 ### Airline
